@@ -13,21 +13,21 @@ class Solution
         Console.WriteLine(result);
     }
     //Solucao 1
-    public static string MergeAlternately(string word1, string word2)
-    {
-        StringBuilder resultado = new StringBuilder();
-        int contador = Math.Max(word1.Length, word2.Length);
-        for (int i = 0; i < contador; i++)
-        {
-            if (i < word1.Length) 
-                resultado.Append(word1[i]);
+    // public static string MergeAlternately(string word1, string word2)
+    // {
+    //     StringBuilder resultado = new StringBuilder();
+    //     int contador = Math.Max(word1.Length, word2.Length);
+    //     for (int i = 0; i < contador; i++)
+    //     {
+    //         if (i < word1.Length) 
+    //             resultado.Append(word1[i]);
 
-            if (i < word2.Length)
-                resultado.Append(word2[i]);
-        }
+    //         if (i < word2.Length)
+    //             resultado.Append(word2[i]);
+    //     }
 
-        return resultado.ToString();
-    }
+    //     return resultado.ToString();
+    // }
 
     //SOLUCAO MAIS RAPIDA LEETCODE
     // public static string MergeAlternately(string word1, string word2)
@@ -57,24 +57,21 @@ class Solution
     //     return word;
     // }
 
-    //RESULTADO - MESCLANDO COM O MAIS RAPIDO
-    // public static string MergeAlternately(string word1, string word2)
-    // {
-    //     StringBuilder resultado = new StringBuilder();
-    //     int contador = Math.Min(word1.Length, word2.Length);
-    //     int j = 0;
-    //     for (int i = 0; i < contador; i++)
-    //     {
-    //         if (i < word1.Length)
-    //             resultado.Append(word1[i]);
+    //RESULTADO - MESCLANDO COM O MAIS RAPIDO - Buscando mais performance
+    public static string MergeAlternately(string word1, string word2)
+    {
+        StringBuilder resultado = new StringBuilder();
+        int contador = Math.Min(word1.Length, word2.Length);
+        int j = 0;
+        for (int i = 0; i < contador; i++)
+        {
+            resultado.Append(word1[i]);
+            resultado.Append(word2[i]);
+            j = i;
+        }
 
-    //         if (i < word2.Length)
-    //             resultado.Append(word2[i]);
-
-    //         j = i;
-    //     }
-    //     resultado.Append(word1.ToString().Substring(j + 1)).Append(word2.ToString().Substring(j + 1));
+        resultado.Append(word1.ToString().Substring(j + 1)).Append(word2.ToString().Substring(j + 1));
         
-    //     return resultado.ToString();
-    // }
+        return resultado.ToString();
+    }
 }
